@@ -5,8 +5,18 @@ import java.util.HashSet;
 enum Sentiments {POSITIVE, NEGATIVE, NEUTRAL}
 
 public class SentimentParser {
-    HashSet<String> positiveWords;
-    HashSet<String> negativeWords;
+
+    private HashSet<String> positiveWords;
+    private HashSet<String> negativeWords;
+
+    
+    public HashSet<String> getPositiveWords() {
+        return positiveWords;
+    }
+
+    public HashSet<String> getNegativeWords() {
+        return negativeWords;
+    }
 
     /*loadWords*/
     /**
