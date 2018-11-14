@@ -9,7 +9,11 @@ public class SentimentParser {
     private HashSet<String> positiveWords;
     private HashSet<String> negativeWords;
 
-    
+    public SentimentParser(String posLexiconLocation, String negLexiconLocation) {
+        this.loadWords(posLexiconLocation, negLexiconLocation);
+    }
+
+
     public HashSet<String> getPositiveWords() {
         return positiveWords;
     }
