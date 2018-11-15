@@ -3,6 +3,7 @@ import org.junit.Before;
 import org.junit.Test;
 import app.SentimentParser;
 
+import java.io.IOException;
 import java.util.HashSet;
 
 import static org.junit.Assert.fail;
@@ -10,12 +11,18 @@ import static org.junit.Assert.fail;
 
 public class SentimentParserTest {
     SentimentParser parser;
-    String posLexiconLocation = "../../src/main/java/resources/lexicons/positive-words.txt";
-    String negLexiconLocation = "../../src/main/java/resources/lexicons/negative-words.txt";
+    String posLexiconLocation = "/home/dileep/IdeaProjects/JavaSentimentMiner/src/main/resources/lexicons/positive-words.txt";
+    String negLexiconLocation = "/home/dileep/IdeaProjects/JavaSentimentMiner/src/main/resources/lexicons/negative-words.txt";
 
     @Before
     public void setupSentimentParser() {
-        this.parser = new SentimentParser(this.posLexiconLocation, this.negLexiconLocation);
+        try {
+            this.parser = new SentimentParser(this.posLexiconLocation, this.negLexiconLocation);
+        } catch (Exception e) {
+            System.out.println("Could not open lexicons for SentimentParser");
+            e.printStackTrace();
+        }
+
     }
 
     @Test
