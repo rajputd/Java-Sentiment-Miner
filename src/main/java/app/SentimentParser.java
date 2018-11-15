@@ -14,9 +14,11 @@ public class SentimentParser {
     private HashSet<String> negativeWords;
 
     public SentimentParser(String posLexiconLocation, String negLexiconLocation) throws Exception {
+        //initialize empty sets before loading them
         this.positiveWords = new HashSet<>();
         this.negativeWords = new HashSet<>();
 
+        //load each set with their associated lexicon
         this.loadWords(this.positiveWords, posLexiconLocation);
         this.loadWords(this.negativeWords, negLexiconLocation);
     }
@@ -39,11 +41,15 @@ public class SentimentParser {
      */
     void loadWords(HashSet<String> wordsSet, String lexiconLocation) throws IOException {
 
+        //get ready to read the file at lexiconLocation
         File file = new File(lexiconLocation);
         BufferedReader reader = new BufferedReader(new FileReader(file));
 
+        //add each word found at lexicon to the set
         String line;
         while ((line = reader.readLine()) != null) {
+
+            //do not add any empty lines, comments, or new lines to the set
             if (line.length() == 0 || line.charAt(0) == ';' || line.charAt(0) == '\n') {
                 continue;
             }
