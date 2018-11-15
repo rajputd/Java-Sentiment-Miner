@@ -1,12 +1,10 @@
+import app.Sentiments;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import app.SentimentParser;
-
-import java.io.IOException;
 import java.util.HashSet;
 
-import static org.junit.Assert.fail;
 
 
 public class SentimentParserTest {
@@ -78,5 +76,46 @@ public class SentimentParserTest {
         Assert.assertFalse(negLex.contains(""));
         Assert.assertFalse(negLex.contains(";"));
     }
+
+    @Test
+    //verify that parseSentiment returns positive for generally positive phrases
+    public void parseReturnsPositiveForPositiveWords() {
+
+        //sentences that are totally positive
+        Assert.assertTrue(Sentiments.POSITIVE == parser.parseSentiment("I am so happy!"));
+        Assert.assertTrue(Sentiments.POSITIVE == parser.parseSentiment("This has been an amazing day"));
+
+        //sentences that have more positive than negative words
+        Assert.assertTrue(Sentiments.POSITIVE == parser.parseSentiment("The food was so worthwhile and good that the patrons begged for more"));
+        Assert.assertTrue(Sentiments.POSITIVE == parser.parseSentiment("His presentation was superbly topnotch despite the unnerved crowd"));
+    }
+
+    @Test
+    //verify that parseSentiment returns positive for generally positive phrases
+    public void parseReturnsPositiveForNegativeWords() {
+
+        //sentences that are totally positive
+        Assert.assertTrue(Sentiments.NEGATIVE == parser.parseSentiment("I am so sad!"));
+        Assert.assertTrue(Sentiments.NEGATIVE == parser.parseSentiment("This has been an terrible day."));
+
+        //sentences that have more positive than negative words
+        Assert.assertTrue(Sentiments.NEGATIVE == parser.parseSentiment("The food was so terrible and poor that the patrons where kind not to leave."));
+        Assert.assertTrue(Sentiments.NEGATIVE == parser.parseSentiment("His presentation was disappointing unpleasant despite the excited crowd."));
+    }
+
+    @Test
+    //verify that parseSentiment returns positive for generally positive phrases
+    public void parseReturnsPositiveForNeutralWords() {
+
+        //sentences that are totally positive
+        Assert.assertTrue(Sentiments.NEUTRAL == parser.parseSentiment("The soup is ok."));
+        Assert.assertTrue(Sentiments.NEUTRAL == parser.parseSentiment("This has been a day."));
+
+        //sentences that have more positive than negative words
+        Assert.assertTrue(Sentiments.NEUTRAL == parser.parseSentiment("The food was ok and the patrons ate it"));
+        Assert.assertTrue(Sentiments.NEUTRAL == parser.parseSentiment("His presentation was ok despite the crowd"));
+    }
+
+
 
 }
