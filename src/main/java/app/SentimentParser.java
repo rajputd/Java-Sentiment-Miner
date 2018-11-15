@@ -61,7 +61,38 @@ public class SentimentParser {
      * @param phrase String that contains data that contains the sentiment that will be parsed.
      * @return The sentiment (POSITIVE, NEGATIVE, or NEUTRAL) associated with the given phrase.
      */
-    Sentiments parseSentiment(String phrase) {
+    public Sentiments parseSentiment(String phrase) {
+
+        //format all characters to lowercase so they can match in the lexicons
+        String lower = phrase.toLowerCase();
+
+        //split phrase into words on spaces and other grammatical marks.
+        String words[] = lower.split("\\W");
+
+        //go through each word and keep a running score tracking sentiment
+        int sentimentScore = 0;
+        for (String word: words) {
+            if (this.positiveWords.contains(word)) {
+                //if word is positive add one to score
+                sentimentScore += 1;
+            } else if (this.negativeWords.contains(word)) {
+                //if word is negative subtract one from score
+                sentimentScore -= 1;
+            }
+        }
+
+        //normalize score by length of phrase
+        float averageScore = (float)sentimentScore / (float)words.length;
+
+        //return the appropriate sentiment according to the normalized score
+        if (averageScore > 0) {
+            return Sentiments.POSITIVE;
+        }
+
+        if (averageScore < 0) {
+            return Sentiments.NEGATIVE;
+        }
+
         return Sentiments.NEUTRAL;
     }
 }
