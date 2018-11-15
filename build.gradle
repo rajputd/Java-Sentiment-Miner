@@ -29,5 +29,6 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
+    compile group: 'org.twitter4j', name: 'twitter4j-core', version: '4.0.7'
     testCompile("junit:junit")
 }
