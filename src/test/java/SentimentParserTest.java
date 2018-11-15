@@ -3,22 +3,27 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import app.SentimentParser;
-import java.util.HashSet;
 
+import java.io.File;
+import java.io.FileReader;
+import java.util.HashSet;
+import java.util.Properties;
 
 
 public class SentimentParserTest {
     SentimentParser parser;
-    String posLexiconLocation = "/home/dileep/IdeaProjects/JavaSentimentMiner/src/main/resources/lexicons/positive-words.txt";
-    String negLexiconLocation = "/home/dileep/IdeaProjects/JavaSentimentMiner/src/main/resources/lexicons/negative-words.txt";
 
 
     @Before
     public void setupSentimentParser() {
+
+        Properties config = new Properties();
+
         try {
-            this.parser = new SentimentParser(this.posLexiconLocation, this.negLexiconLocation);
+            config.load(new FileReader(new File("config.properties")));
+            this.parser = new SentimentParser(config.getProperty("positiveLexiconLocation"), config.getProperty("negativeLexiconLocation"));
         } catch (Exception e) {
-            System.out.println("Could not open lexicons for SentimentParser");
+            System.out.println("Could not open needed config/resource files");
             e.printStackTrace();
         }
 
