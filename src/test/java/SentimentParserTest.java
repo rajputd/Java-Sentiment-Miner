@@ -60,8 +60,8 @@ public class SentimentParserTest {
     }
 
     @Test
-    //make sure that there are no undesireable things within the lexicon
-    public void posLexiconDoesNotContainUndesireableWords() {
+    //make sure that there are no undesirable things within the lexicon
+    public void posLexiconDoesNotContainUndesirableWords() {
         HashSet<String> posLex = this.parser.getPositiveWords();
 
         Assert.assertFalse(posLex.contains("\n"));
@@ -70,8 +70,8 @@ public class SentimentParserTest {
     }
 
     @Test
-    //make sure that there are no undesireable things within the lexicon
-    public void negLexiconDoesNotContainUndesireableWords() {
+    //make sure that there are no undesirable things within the lexicon
+    public void negLexiconDoesNotContainUndesirableWords() {
         HashSet<String> negLex = this.parser.getNegativeWords();
 
         Assert.assertFalse(negLex.contains("\n"));
