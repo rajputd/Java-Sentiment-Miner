@@ -20,4 +20,18 @@ public class TwitterClientTest {
         Assert.assertTrue(result != null);
     }
 
+    @Test
+    public void checkResponseSize() {
+        List<Status> result = null;
+
+        try {
+            result = TwitterClient.getTweets("#Trump", 100 );
+            Assert.assertTrue(result.size() == 100);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+
+    }
+
 }
