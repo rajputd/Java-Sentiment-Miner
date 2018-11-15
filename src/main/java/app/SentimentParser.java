@@ -6,8 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
 
-enum Sentiments {POSITIVE, NEGATIVE, NEUTRAL}
-
 public class SentimentParser {
 
     private HashSet<String> positiveWords;
