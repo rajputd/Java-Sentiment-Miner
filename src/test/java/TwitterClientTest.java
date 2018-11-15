@@ -22,7 +22,7 @@ public class TwitterClientTest {
 
     @Test
     public void checkResponseSize() {
-        List<Status> result = null;
+        List<Status> result;
 
         try {
             result = TwitterClient.getTweets("#Trump", 100 );
