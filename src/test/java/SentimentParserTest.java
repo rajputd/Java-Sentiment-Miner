@@ -14,6 +14,7 @@ public class SentimentParserTest {
     String posLexiconLocation = "/home/dileep/IdeaProjects/JavaSentimentMiner/src/main/resources/lexicons/positive-words.txt";
     String negLexiconLocation = "/home/dileep/IdeaProjects/JavaSentimentMiner/src/main/resources/lexicons/negative-words.txt";
 
+
     @Before
     public void setupSentimentParser() {
         try {
@@ -26,6 +27,7 @@ public class SentimentParserTest {
     }
 
     @Test
+    //check if we can actually get the lexicons
     public void lexiconSmokeTest() {
         HashSet<String> posLex = this.parser.getPositiveWords();
         HashSet<String> negLex = this.parser.getNegativeWords();
@@ -36,7 +38,8 @@ public class SentimentParserTest {
     }
 
     @Test
-    public void posLexiconTest() {
+    //check to make sure words in the lexicon are actually in the set
+    public void posLexiconContainsDesiredWords() {
         HashSet<String> posLex = this.parser.getPositiveWords();
 
         Assert.assertTrue(posLex.contains("admirable"));
@@ -46,7 +49,8 @@ public class SentimentParserTest {
     }
 
     @Test
-    public void negLexiconTest() {
+    //check to make sure words in the lexicon are actually in the set
+    public void negLexiconContainsDesiredWords() {
         HashSet<String> negLex = this.parser.getNegativeWords();
 
         Assert.assertTrue(negLex.contains("absence"));
