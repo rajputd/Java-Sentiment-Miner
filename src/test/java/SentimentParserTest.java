@@ -59,4 +59,24 @@ public class SentimentParserTest {
         Assert.assertTrue(negLex.contains("weary"));
     }
 
+    @Test
+    //make sure that there are no undesireable things within the lexicon
+    public void posLexiconDoesNotContainUndesireableWords() {
+        HashSet<String> posLex = this.parser.getPositiveWords();
+
+        Assert.assertFalse(posLex.contains("\n"));
+        Assert.assertFalse(posLex.contains(""));
+        Assert.assertFalse(posLex.contains(";"));
+    }
+
+    @Test
+    //make sure that there are no undesireable things within the lexicon
+    public void negLexiconDoesNotContainUndesireableWords() {
+        HashSet<String> negLex = this.parser.getNegativeWords();
+
+        Assert.assertFalse(negLex.contains("\n"));
+        Assert.assertFalse(negLex.contains(""));
+        Assert.assertFalse(negLex.contains(";"));
+    }
+
 }
