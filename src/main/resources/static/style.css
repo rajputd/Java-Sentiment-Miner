@@ -20,3 +20,15 @@ form {
 #hashtag {
     width: 50%;
 }
+
+#chart-container {
+    position: relative;
+    height:30vh;
+    max-width:30vw;
+    margin: auto;
+}
+
+#form-container {
+    position: relative;
+    top: 20vh;
+}

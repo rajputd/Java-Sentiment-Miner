@@ -59,11 +59,11 @@ public class SentimentMinerController {
             }
 
             //format results into a js variable for the frontend to render;
-            dataset = "{positive: " + positiveCount + ", negative: " + negativeCount + ", neutral: " + neutralCount + "}";
+            dataset = positiveCount + ", " + negativeCount + ", " + neutralCount;
 
         } catch (Exception e) {
             //give the frontend a warning message to display
-            warning = "Could not access Twitter to gather data. Please try again at some other time.";
+            warning = "Could not access Twitter to gather data. The displayed results are invalid. Please try again at some other time.";
         }
 
         //pass data to frontend
