@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sentiment Miner</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+    <body>
+        <h1> Welcome to the Java Sentiment Miner!</h1>
+        <p> Type in a hashtag to see the current sentiment on twitter regarding it</p>
+        <form action="/displaySentiment" method="POST">
+            <span>#</span><input type="text" name="hashtag" /></span>
+            <input type="submit" name="submit" />
+        </form>
+    </body>
+</html>

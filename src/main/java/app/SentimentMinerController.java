@@ -31,12 +31,7 @@ public class SentimentMinerController {
         }
     }
 
-    @GetMapping("/")
-    public String displayHomePage() {
-        return "home";
-    }
-
-    @PostMapping("/")
+    @PostMapping("/displaySentiment")
     public String displaySentimentData(@RequestParam(name="hashtag", required = true) String hashtag, Model model) {
 
         //contain data that will be passed to frontend
