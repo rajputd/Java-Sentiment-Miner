@@ -67,6 +67,7 @@ public class SentimentMinerController {
         }
 
         //pass data to frontend
+        model.addAttribute("hashtag", hashtag);
         model.addAttribute("dataset", dataset);
         model.addAttribute("warning", warning);
         return "minerDisplay";
